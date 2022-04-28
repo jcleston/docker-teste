@@ -1,0 +1,364 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Api Documentação",
+      "description": "Documentação detalhada sobre a api",
+      "version": "1.0"
+    },
+    "produces": ["application/json"],
+    "host": "localhost:3000",
+    "tags":[
+      {
+        "name": "Api",
+        "description":" Retorna todas linhas de ônibus"
+      },
+      {
+        "name": "Filtrar",
+        "description":" Retorna Valores filtrados pelo nome"
+      },
+      {
+        "name": "Linha",
+        "description":" CRUD de linhas"
+      },
+      {
+        "name": "Itinerario",
+        "description":" CRUD de itinerarios"
+      },
+      {
+        "name": "Taxi",
+        "description":" Cadastro e consulta de linhas de taxi"
+      }
+    ],
+    "basePath": "",
+    "paths": {
+      "/api": {
+        "get": {          
+          "tags": [
+            "Api"
+          ],
+          "summary": "Retorna todos valores de linhas", 
+          "parameters": [],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        }
+      },
+      "/Api/{linhaID}": {
+        "parameters": [
+          {
+            "name": "linhaID",
+            "in": "path",
+            "required": true,
+            "description": "ID da linha de ônibus"
+          }
+        ],
+        "get": {          
+          "tags": [
+            "Api"
+          ],
+          "summary": "Pega o itinerario da linha",          
+          "responses": {
+            "200": {
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar itinerarios"
+            }
+          }
+        }
+      },
+      "/filtrar/{nome}": {
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "path",
+            "required": true,
+            "description": "Nome do item, para filtrar"
+          }
+        ],
+        "get": {          
+          "tags": [
+            "Filtrar"
+          ],
+          "summary": "Retorna valores filtrados",          
+          "responses": {
+            "200": {
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar itinerarios"
+            }
+          }
+        }
+      },
+      "/linhas": {
+        "get": {          
+          "tags": [
+            "Linha"
+          ],
+          "parameters": [],
+          "summary": "Retorna todas linhas do bando mongo", 
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        },
+        "post": {          
+          "tags": [
+            "Linha"
+          ],
+          "summary": "cria uma linha no banco", 
+          "parameters": [
+            {
+              "in":"body",
+              "name":"body",
+              "description":"adicionar linha de ônibus",
+              "schema":{
+                "$ref":"#definitions/linha"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        }
+      },
+      "/linhas/{linhaID}": {
+        "put": {          
+          "tags": [
+            "Linha"
+          ],
+          "parameters": [
+            {
+              "in":"body",
+              "name":"body",
+              "description":"adicionar linha de ônibus",
+              "schema":{
+                "$ref":"#definitions/linha"
+              }
+            },
+            {
+              "name": "linhaID",
+              "in": "path",
+              "required": true,
+              "description": "Id da linha que será para atualizada"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        },
+        "delete": {          
+          "tags": [
+            "Linha"
+          ],
+          "parameters": [
+            {
+              "name": "linhaID",
+              "in": "path",
+              "required": true,
+              "description": "Id da linha a ser deletada"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        }
+      },
+      "/itinerario": {
+        "get": {          
+          "tags": [
+            "Itinerario"
+          ],
+          "parameters": [],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        },
+        "post": {          
+          "tags": [
+            "Itinerario"
+          ],
+          "parameters": [
+            {
+              "in":"body",
+              "name":"body",
+              "description":"adicionar linha de ônibus",
+              "schema":{
+                "$ref":"#definitions/itinerario"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        }
+      },
+      "/Itinerario/{itinerarioId}": {
+        "put": {          
+          "tags": [
+            "Itinerario"
+          ],
+          "parameters": [
+            {
+              "in":"body",
+              "name":"body",
+              "description":"adicionar linha de ônibus",
+              "schema":{
+                "$ref":"#definitions/itinerario"
+              }
+            },
+            {
+              "name": "itinerarioId",
+              "in": "path",
+              "required": true,
+              "description": "Id da linha que será para atualizada"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        },
+        "delete": {          
+          "tags": [
+            "Itinerario"
+          ],
+          "parameters": [
+            {
+              "name": "itinerarioId",
+              "in": "path",
+              "required": true,
+              "description": "Id da linha a ser deletada"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        }
+      },
+      "/taxi": {
+        "get": {          
+          "tags": [
+            "Taxi"
+          ],
+          "parameters": [],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        },
+        "post": {          
+          "tags": [
+            "Taxi"
+          ],
+          "parameters": [
+            {
+              "in":"body",
+              "name":"body",
+              "description":"adicionar linha de ônibus",
+              "schema":{
+                "$ref":"#definitions/taxi"
+              }
+            }
+          ],
+          "responses": {
+            "200":{
+              "description":"OK"
+            },
+            "400": {
+              "description":"Falha ao carregar Linhas"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "linha": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }            
+        }
+      },
+      "itinerario": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "string"
+          },
+          "lng": {
+            "type": "string"
+          },
+          "idLinha": {
+            "type": "string"
+          }           
+        }
+      },
+      "taxi": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "string"
+          },
+          "lng": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          }           
+        }
+      }
+    }
+ }

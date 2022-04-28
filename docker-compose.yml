@@ -1,19 +1,35 @@
-version: '3.4'
+version: "3.4"
 
 services:
   poa-api-2:
-    image: poa-api-2
-    build: .
-    command: node src/index.js
-    ports:
-      - "3000:3000"
-    volumes:
-      - /app
-      - /app/node_modules
-    depends_on:
-      - "mongo"
+   image: "poa-api-2"
+   build: .
+   command: "node src/index.js"
+   ports:
+    - "3000:3000"
+   volumes:
+    - "/app"
+    - "/app/node_modules"
+   depends_on:
+    - "mongo"
 
   mongo:
-    image: "mongo"
-    ports:
-      - "27017:27017"
+   image: "mongo"
+   ports:
+    - "27017:27017"
+
+# version: "3.9"  # optional since v1.27.0
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "8000:5000"
+#     volumes:
+#       - .:/code
+#       - logvolume01:/var/log
+#     links:
+#       - redis
+#   redis:
+#     image: redis
+# volumes:
+#   logvolume01: {}

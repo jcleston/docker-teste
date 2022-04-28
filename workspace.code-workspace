@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"name": "setrab",
+			"path": "../../../setrab"
+		},
+		{
+			"name": "core-video",
+			"path": "../../../core-video"
+		},
+		{
+			"name": "core-base-php",
+			"path": "../../../core-base-php"
+		},
+		{
+			"name": "modulo1",
+			"path": "../../modulo1"
+		},
+		{
+			"name": "modulo2",
+			"path": "../../modulo2"
+		},
+		{
+			"path": "../../crud-react-nodejs-postgresql"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "modulo1",
+		"liveServer.settings.port": 5501
+	}
+}
